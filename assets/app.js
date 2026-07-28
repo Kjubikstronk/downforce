@@ -21,13 +21,16 @@
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   }
 
+  function rgb(c) {
+    return 'rgb(' + c[0] + ',' + c[1] + ',' + c[2] + ')';
+  }
+
   function mix(a, b, t) {
-    return (
-      'rgb(' +
-      Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
-      Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
-      Math.round(a[2] + (b[2] - a[2]) * t) + ')'
-    );
+    return rgb([
+      Math.round(a[0] + (b[0] - a[0]) * t),
+      Math.round(a[1] + (b[1] - a[1]) * t),
+      Math.round(a[2] + (b[2] - a[2]) * t),
+    ]);
   }
 
   var currentAccent = '';
@@ -87,12 +90,12 @@
     var last = bands[bands.length - 1];
 
     if (ref <= first.top) {
-      setAccent(mix(first.from, first.from, 0));
+      setAccent(rgb(first.from));
       setLiveTick(first.pos);
       return;
     }
     if (ref >= last.top + last.height) {
-      setAccent(mix(last.to, last.to, 0));
+      setAccent(rgb(last.to));
       setLiveTick(last.pos);
       return;
     }
@@ -100,7 +103,15 @@
     for (var i = 0; i < bands.length; i++) {
       var b = bands[i];
       if (ref >= b.top && ref < b.top + b.height) {
-        setAccent(b.solid ? mix(b.from, b.from, 0) : mix(b.from, b.to, (ref - b.top) / b.height));
+        if (b.solid) {
+          setAccent(rgb(b.from));
+        } else {
+          var t = (ref - b.top) / b.height;
+          // Scrubbing a colour frame-by-frame against the wheel is exactly the
+          // motion a reduced-motion visitor asked not to have. They get one
+          // switch at the midpoint instead, softened by the CSS transition.
+          setAccent(reduced ? rgb(t < 0.5 ? b.from : b.to) : mix(b.from, b.to, t));
+        }
         setLiveTick(b.pos);
         return;
       }
