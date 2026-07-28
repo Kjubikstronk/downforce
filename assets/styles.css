@@ -67,6 +67,12 @@ h3 {
   font-weight: 700;
 }
 
+/* Most paragraphs here sit in grid or flex containers that own their spacing.
+   Leaving the UA margins on makes every gap the sum of two rules. */
+p {
+  margin: 0;
+}
+
 a {
   color: inherit;
 }
@@ -524,6 +530,7 @@ a {
 
 .legend p {
   max-width: 38rem;
+  margin-top: 0.9rem;
   color: var(--dim);
   font-size: 0.94rem;
 }

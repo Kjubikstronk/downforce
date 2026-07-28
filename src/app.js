@@ -135,7 +135,9 @@
   for (var d = 0; d < dated.length; d++) {
     var when = new Date(dated[d].dataset.iso);
     if (isNaN(when)) continue;
-    dated[d].textContent = when.toLocaleString(undefined, {
+    // Fixed to en-GB rather than the visitor's locale: the rest of the page is
+    // English, and "So., 23. Aug." next to English copy reads as a fault.
+    dated[d].textContent = when.toLocaleString('en-GB', {
       weekday: 'short',
       day: 'numeric',
       month: 'short',
