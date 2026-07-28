@@ -1,0 +1,529 @@
+/* ==========================================================================
+   f1page — the championship order as a descent
+   Type:  Chakra Petch (display) / IBM Plex Mono (data) / IBM Plex Sans (body)
+   Base:  cool near-black instrument panel; team colour is the only chroma.
+   ========================================================================== */
+
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #7A8698;
+}
+
+:root {
+  --void: #08090b;
+  --carbon: #0e1116;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-bright: rgba(255, 255, 255, 0.18);
+  --text: #eaedf2;
+  --dim: #8b95a8;
+  --dimmer: #737f96;
+
+  /* Team colours are chosen for the car, not for legibility — Ferrari red and
+     Red Bull blue both land under 4.5:1 as small text on this background. Any
+     accent-coloured text uses this lightened mix instead; the raw accent is
+     reserved for large display type and graphics, which only need 3:1. */
+  --accent-ink: #cfd6e2;
+  --accent-ink: color-mix(in srgb, var(--accent) 72%, #ffffff);
+
+  --display: 'Chakra Petch', system-ui, sans-serif;
+  --data: 'IBM Plex Mono', ui-monospace, monospace;
+  --body: 'IBM Plex Sans', system-ui, sans-serif;
+
+  --rail-w: 4.5rem;
+  --pad: clamp(1.25rem, 5vw, 5.5rem);
+}
+
+/* Reduced-motion visitors get the colour change as a CSS transition instead of
+   a scroll-scrubbed one, so the page still shifts but never tracks the wheel. */
+:root.rm {
+  transition: --accent 500ms linear;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--carbon);
+  font-family: var(--data);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.skip:focus {
+  left: 0;
+}
+
+/* --- ambient background: one fixed layer, tinted by the live accent -------- */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  /* Capped at 12%: past that the wash lifts the background enough to push the
+     small metadata text under 4.5:1 on the brighter team colours. */
+  background:
+    radial-gradient(120vw 90vh at 78% 18%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 62%),
+    radial-gradient(90vw 70vh at 8% 92%, color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
+    var(--void);
+}
+
+/* Fine horizontal scanlines: an instrument-panel texture, not a decoration
+   contest — barely visible, and gone entirely on coarse pointers. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.022) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+/* --- the descent gauge: fixed rail marking every position ----------------- */
+
+.rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--rail-w);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  pointer-events: none;
+  border-right: 1px solid var(--line);
+  background: linear-gradient(to right, rgba(8, 9, 11, 0.94), rgba(8, 9, 11, 0.4));
+}
+
+.rail-tick {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--data);
+  font-size: 0.6rem;
+  color: var(--dimmer);
+  transition: color 250ms ease;
+}
+
+.rail-tick::after {
+  content: '';
+  width: 0.7rem;
+  height: 1px;
+  background: currentColor;
+  transition: width 250ms ease, background 250ms ease;
+}
+
+.rail-tick.is-live {
+  color: var(--accent-ink);
+}
+
+.rail-tick.is-live::after {
+  width: 1.5rem;
+}
+
+/* --- hero ----------------------------------------------------------------- */
+
+.hero {
+  min-height: 100svh;
+  padding: clamp(3rem, 9vh, 7rem) var(--pad) 3rem calc(var(--rail-w) + var(--pad));
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 2rem;
+}
+
+.eyebrow {
+  font-family: var(--data);
+  font-size: clamp(0.62rem, 1.4vw, 0.72rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.hero-mid {
+  align-self: center;
+  max-width: 62rem;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(3.6rem, 17vw, 15rem);
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.hero-sub {
+  max-width: 34rem;
+  font-size: clamp(1rem, 2.1vw, 1.2rem);
+  line-height: 1.6;
+  color: #b7c0cf;
+  margin: 0;
+}
+
+.hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.next-race {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.next-race-name {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.next-race-when {
+  font-family: var(--data);
+  font-size: 0.8rem;
+  color: var(--accent-ink);
+}
+
+.next-race-where {
+  font-family: var(--data);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--data);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.scroll-cue span {
+  display: block;
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+/* --- team section --------------------------------------------------------- */
+
+.team {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: 6rem var(--pad) 6rem calc(var(--rail-w) + var(--pad));
+}
+
+.team-pos {
+  font-family: var(--data);
+  font-weight: 600;
+  font-size: clamp(6rem, 22vw, 20rem);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+  color: var(--accent);
+  justify-self: end;
+  align-self: center;
+}
+
+.team-body {
+  display: grid;
+  gap: 1.6rem;
+  align-content: center;
+  min-width: 0;
+}
+
+.team-name {
+  font-family: var(--display);
+  font-size: clamp(2.1rem, 7.5vw, 5.4rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.team-meta {
+  font-family: var(--data);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.team-points {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--data);
+  font-weight: 500;
+}
+
+.team-points b {
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.team-points i {
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--dim);
+}
+
+.drivers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  max-width: 32rem;
+}
+
+.drivers li {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.driver-code {
+  font-family: var(--data);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-ink);
+}
+
+.driver-name {
+  font-size: 0.98rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.driver-pts {
+  font-family: var(--data);
+  font-size: 0.9rem;
+  color: var(--dim);
+}
+
+/* --- gap corridor: height is the points gap, to scale --------------------- */
+
+.gap {
+  height: var(--gap-h, 20vh);
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-left: var(--rail-w);
+}
+
+.gap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--line-bright), transparent);
+}
+
+.gap-label {
+  position: relative;
+  padding: 0.4rem 0.9rem;
+  background: var(--void);
+  font-family: var(--data);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.gap-label b {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* --- calendar footer ------------------------------------------------------ */
+
+.calendar {
+  padding: clamp(4rem, 12vh, 8rem) var(--pad) 3rem calc(var(--rail-w) + var(--pad));
+  border-top: 1px solid var(--line);
+  background: var(--carbon);
+}
+
+.calendar h2 {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+
+.races {
+  list-style: none;
+  margin: 0 0 3rem;
+  padding: 0;
+  max-width: 56rem;
+}
+
+.races li {
+  display: grid;
+  grid-template-columns: 2.6rem 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.races li.is-done {
+  color: var(--dimmer);
+}
+
+.race-round {
+  font-family: var(--data);
+  font-size: 0.72rem;
+  color: var(--dim);
+}
+
+.race-name {
+  font-size: 0.98rem;
+  min-width: 0;
+}
+
+.race-when {
+  font-family: var(--data);
+  font-size: 0.76rem;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.races li.is-next .race-round,
+.races li.is-next .race-when {
+  color: var(--accent-ink);
+}
+
+.colophon {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--data);
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: var(--dimmer);
+  max-width: 44rem;
+}
+
+.colophon a {
+  color: var(--dim);
+}
+
+/* --- responsive ----------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  :root {
+    --rail-w: 2.6rem;
+  }
+
+  .rail-tick {
+    font-size: 0.52rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    align-content: center;
+  }
+
+  .team-pos {
+    justify-self: start;
+    font-size: clamp(4.5rem, 26vw, 9rem);
+  }
+
+  .drivers li {
+    grid-template-columns: 2.8rem 1fr auto;
+    gap: 0.7rem;
+  }
+
+  .hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .grain {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  :root.rm {
+    transition: --accent 400ms linear;
+  }
+}

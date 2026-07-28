@@ -1,0 +1,7 @@
+# Keep line endings stable between Windows checkouts and the Linux CI runner,
+# so the scheduled rebuild doesn't commit whole-file diffs.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary

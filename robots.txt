@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kjubikstronk.github.io/f1page/sitemap.xml
