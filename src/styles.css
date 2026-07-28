@@ -300,6 +300,18 @@ a {
   line-height: 0.92;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.6vw, 1.1rem);
+}
+
+/* Original geometric mark, not a team logo — see lib/marks.js. Sized off the
+   heading so it stays locked to the type at every breakpoint. */
+.mark {
+  flex: none;
+  width: 0.82em;
+  height: 0.82em;
+  color: var(--accent);
 }
 
 .team-meta {
@@ -336,36 +348,124 @@ a {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--line);
-  max-width: 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  max-width: 40rem;
 }
 
-.drivers li {
+.driver {
   display: grid;
-  grid-template-columns: 3.2rem 1fr auto;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid var(--line);
+  gap: 0.7rem;
+  flex: 1 1 9rem;
+  min-width: 0;
+  max-width: 13rem;
+}
+
+/* Wikimedia portraits arrive with every possible background, crop and colour
+   temperature. Flattening them to a single team-coloured duotone is what makes
+   a set of unrelated snapshots read as one deliberate system. */
+.driver-shot {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #14181f;
+  border: 1px solid var(--line);
+  isolation: isolate;
+}
+
+.driver-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  display: block;
+  filter: grayscale(1) contrast(1.08) brightness(0.95);
+}
+
+.driver-shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+
+/* Keeps the face readable where the racing number sits over it. */
+.driver-shot::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(4, 5, 7, 0.9), transparent);
+  pointer-events: none;
+}
+
+.driver-shot.is-empty {
+  display: grid;
+  place-items: center;
+}
+
+.driver-initials {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  color: var(--dimmer);
+  letter-spacing: 0.02em;
+}
+
+/* The car number — authentic F1 furniture, and nothing anyone owns. */
+.driver-no {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.15rem;
+  z-index: 3;
+  font-family: var(--data);
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--text);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.driver-id {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
 }
 
 .driver-code {
   font-family: var(--data);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.14em;
   color: var(--accent-ink);
 }
 
 .driver-name {
-  font-size: 0.98rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: var(--dim);
   min-width: 0;
   overflow-wrap: break-word;
 }
 
+.driver-name b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
 .driver-pts {
   font-family: var(--data);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--dim);
 }
 
@@ -478,6 +578,20 @@ a {
 
 .colophon a {
   color: var(--dim);
+}
+
+.credits summary {
+  cursor: pointer;
+  padding: 0.4rem 0;
+  color: var(--dim);
+}
+
+.credits ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
 }
 
 /* --- responsive ----------------------------------------------------------- */

@@ -5,6 +5,8 @@
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ensurePortraits } from './lib/portraits.js';
+import { renderMark } from './lib/marks.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DATA = path.join(ROOT, 'data');
@@ -101,8 +103,13 @@ function buildModel(consRaw, drvRaw, raceRaw) {
     const team = d.Constructors[d.Constructors.length - 1];
     if (!byTeam.has(team.constructorId)) byTeam.set(team.constructorId, []);
     byTeam.get(team.constructorId).push({
+      id: d.Driver.driverId,
       code: d.Driver.code || d.Driver.familyName.slice(0, 3).toUpperCase(),
       name: `${d.Driver.givenName} ${d.Driver.familyName}`,
+      first: d.Driver.givenName,
+      last: d.Driver.familyName,
+      number: d.Driver.permanentNumber ?? null,
+      wikiTitle: decodeURIComponent((d.Driver.url ?? '').split('/wiki/')[1] ?? ''),
       points: Number(d.points),
       position: Number(d.position),
     });
@@ -148,18 +155,38 @@ function corridorHeight(gap, maxGap) {
   return (MIN_GAP_VH + (gap / Math.max(maxGap, 1)) * (MAX_GAP_VH - MIN_GAP_VH)).toFixed(1);
 }
 
-function renderTeam(team) {
+/* A portrait, or the driver's initials when we have no freely-licensed one.
+   Portraits are tinted to the team colour in CSS rather than baked in, so the
+   file we ship stays the file we were licensed. */
+function renderShot(driver, portraits) {
+  const credit = portraits[driver.id];
+  const number = driver.number
+    ? `<span class="driver-no" aria-hidden="true">${esc(driver.number)}</span>`
+    : '';
+
+  if (!credit || credit.unavailable || !credit.file) {
+    const initials = `${driver.first?.[0] ?? ''}${driver.last?.[0] ?? ''}`.toUpperCase();
+    return `<figure class="driver-shot is-empty"><span class="driver-initials" aria-hidden="true">${esc(initials)}</span>${number}</figure>`;
+  }
+
+  return `<figure class="driver-shot"><img src="assets/${esc(credit.file)}" alt="" loading="lazy" decoding="async">${number}</figure>`;
+}
+
+function renderTeam(team, portraits) {
   const drivers = team.drivers.length
     ? team.drivers
         .map(
-          (d) => `        <li>
-          <span class="driver-code">${esc(d.code)}</span>
-          <span class="driver-name">${esc(d.name)}</span>
-          <span class="driver-pts">${d.points} pts</span>
+          (d) => `        <li class="driver">
+          ${renderShot(d, portraits)}
+          <div class="driver-id">
+            <span class="driver-code">${esc(d.code)}</span>
+            <span class="driver-name">${esc(d.first)} <b>${esc(d.last)}</b></span>
+            <span class="driver-pts">${d.points} pts</span>
+          </div>
         </li>`
         )
         .join('\n')
-    : '        <li><span class="driver-name">Driver line-up not published yet</span></li>';
+    : '        <li class="driver"><div class="driver-id"><span class="driver-name">Driver line-up not published yet</span></div></li>';
 
   const winLabel =
     team.wins === 0 ? 'No wins yet' : `${team.wins} win${team.wins === 1 ? '' : 's'}`;
@@ -167,7 +194,7 @@ function renderTeam(team) {
   return `  <section class="team" id="p${team.position}" data-color="${team.color}" data-pos="${team.position}" aria-labelledby="t${team.position}">
     <p class="team-pos" aria-hidden="true">${pad2(team.position)}</p>
     <div class="team-body">
-      <h2 class="team-name" id="t${team.position}">${esc(team.name)}</h2>
+      <h2 class="team-name" id="t${team.position}">${renderMark(team.id)}${esc(team.name)}</h2>
       <p class="team-meta">P${team.position} &middot; ${esc(team.nationality)} &middot; ${winLabel}</p>
       <p class="team-points"><b>${team.points}</b><i>points</i></p>
       <ul class="drivers">
@@ -177,13 +204,13 @@ ${drivers}
   </section>`;
 }
 
-function renderSections(teams) {
+function renderSections(teams, portraits) {
   const gaps = teams.slice(1).map((t, i) => teams[i].points - t.points);
   const maxGap = Math.max(...gaps, 1);
   const out = [];
 
   teams.forEach((team, i) => {
-    out.push(renderTeam(team));
+    out.push(renderTeam(team, portraits));
 
     const nextTeam = teams[i + 1];
     if (!nextTeam) return;
@@ -239,6 +266,34 @@ function renderRaces(calendar, next) {
     .join('\n');
 }
 
+/* Every licence we accept except CC0 requires naming the author, so the credits
+   are part of the page rather than a file nobody reads. */
+function renderCredits(teams, portraits) {
+  const used = [];
+  for (const team of teams) {
+    for (const d of team.drivers) {
+      const c = portraits[d.id];
+      if (c && !c.unavailable && c.file) {
+        used.push(
+          `${esc(d.name)} &mdash; ${esc(c.author)}, ${
+            c.licenceUrl
+              ? `<a href="${esc(c.licenceUrl)}" rel="noopener nofollow">${esc(c.licence)}</a>`
+              : esc(c.licence)
+          }${c.source ? `, <a href="${esc(c.source)}" rel="noopener nofollow">source</a>` : ''}`
+        );
+      }
+    }
+  }
+
+  if (!used.length) return '';
+  return `    <details class="credits">
+      <summary>Driver portrait credits (${used.length})</summary>
+      <ul>
+${used.map((u) => `        <li>${u}</li>`).join('\n')}
+      </ul>
+    </details>`;
+}
+
 /* ---------- main ---------------------------------------------------------- */
 
 async function main() {
@@ -264,6 +319,11 @@ async function main() {
 
   await writeFile(path.join(DATA, 'model.json'), JSON.stringify(model, null, 2));
 
+  // Cached by driver id — a scheduled rebuild costs no Wikimedia requests
+  // unless the grid has changed.
+  const allDrivers = model.teams.flatMap((t) => t.drivers).filter((d) => d.wikiTitle);
+  const portraits = await ensurePortraits(allDrivers, { assetsDir: ASSETS, dataDir: DATA });
+
   const now = new Date();
   const leader = model.teams[0];
   const title = `The Order — ${model.season} F1 constructor standings`;
@@ -278,7 +338,8 @@ async function main() {
     .replaceAll('{{TEAM_COUNT}}', String(model.teams.length))
     .replaceAll('{{RAIL}}', renderRail(model.teams))
     .replaceAll('{{HERO_NEXT}}', renderHeroNext(model.next))
-    .replaceAll('{{SECTIONS}}', renderSections(model.teams))
+    .replaceAll('{{SECTIONS}}', renderSections(model.teams, portraits))
+    .replaceAll('{{CREDITS}}', renderCredits(model.teams, portraits))
     .replaceAll('{{RACES}}', renderRaces(model.calendar, model.next))
     .replaceAll('{{UPDATED_ISO}}', now.toISOString())
     .replaceAll(
