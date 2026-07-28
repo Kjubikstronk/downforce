@@ -513,6 +513,89 @@ a {
   background: var(--carbon);
 }
 
+/* --- legend: how to read the marks ---------------------------------------- */
+
+.legend {
+  max-width: 56rem;
+  margin-bottom: clamp(3rem, 8vh, 5rem);
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.legend p {
+  max-width: 38rem;
+  color: var(--dim);
+  font-size: 0.94rem;
+}
+
+.legend dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 1.75rem 0;
+}
+
+.legend dt {
+  font-family: var(--data);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.legend dd {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+.legend-eg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.legend-eg figure {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.legend-eg .mark {
+  width: 3.4rem;
+  height: 3.4rem;
+  flex: none;
+}
+
+.legend-eg figcaption {
+  font-family: var(--data);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--dim);
+}
+
+.legend-eg figcaption b {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.legend-note {
+  font-family: var(--data);
+  font-size: 0.7rem;
+  color: var(--dimmer);
+}
+
+/* Needs a box of its own so the title tooltip has something to hang on. */
+.mark-holder {
+  display: inline-flex;
+  flex: none;
+}
+
 .calendar h2 {
   font-family: var(--display);
   font-size: clamp(1.6rem, 5vw, 2.6rem);

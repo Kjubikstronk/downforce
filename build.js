@@ -6,7 +6,7 @@ import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ensurePortraits } from './lib/portraits.js';
-import { renderMark } from './lib/marks.js';
+import { renderMark, describeMark } from './lib/marks.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DATA = path.join(ROOT, 'data');
@@ -172,7 +172,7 @@ function renderShot(driver, portraits) {
   return `<figure class="driver-shot"><img src="assets/${esc(credit.file)}" alt="" loading="lazy" decoding="async">${number}</figure>`;
 }
 
-function renderTeam(team, portraits) {
+function renderTeam(team, portraits, context) {
   const drivers = team.drivers.length
     ? team.drivers
         .map(
@@ -194,7 +194,7 @@ function renderTeam(team, portraits) {
   return `  <section class="team" id="p${team.position}" data-color="${team.color}" data-pos="${team.position}" aria-labelledby="t${team.position}">
     <p class="team-pos" aria-hidden="true">${pad2(team.position)}</p>
     <div class="team-body">
-      <h2 class="team-name" id="t${team.position}">${renderMark(team.id)}${esc(team.name)}</h2>
+      <h2 class="team-name" id="t${team.position}"><span class="mark-holder" title="${esc(describeMark(team, context))}">${renderMark(team, context)}</span>${esc(team.name)}</h2>
       <p class="team-meta">P${team.position} &middot; ${esc(team.nationality)} &middot; ${winLabel}</p>
       <p class="team-points"><b>${team.points}</b><i>points</i></p>
       <ul class="drivers">
@@ -204,13 +204,13 @@ ${drivers}
   </section>`;
 }
 
-function renderSections(teams, portraits) {
+function renderSections(teams, portraits, context) {
   const gaps = teams.slice(1).map((t, i) => teams[i].points - t.points);
   const maxGap = Math.max(...gaps, 1);
   const out = [];
 
   teams.forEach((team, i) => {
-    out.push(renderTeam(team, portraits));
+    out.push(renderTeam(team, portraits, context));
 
     const nextTeam = teams[i + 1];
     if (!nextTeam) return;
@@ -264,6 +264,34 @@ function renderRaces(calendar, next) {
     </li>`;
     })
     .join('\n');
+}
+
+/* The marks are a readout, not decoration, so the page has to say how to read
+   them. Uses the actual leader and the actual backmarker as the two examples. */
+function renderLegend(teams, context) {
+  const leader = teams[0];
+  const last = teams[teams.length - 1];
+
+  return `  <section class="legend">
+    <h2>Reading the marks</h2>
+    <p>Each team's mark is drawn from its own season rather than from its badge. Three things vary:</p>
+    <dl>
+      <div><dt>Blades</dt><dd>One per race win. More wins, denser mark.</dd></div>
+      <div><dt>Lean</dt><dd>Championship position. The leader stands upright; the tail leans away.</dd></div>
+      <div><dt>Ring</dt><dd>Points as a share of the leader's. The leader closes the circle.</dd></div>
+    </dl>
+    <div class="legend-eg">
+      <figure style="--accent:${leader.color}">
+        ${renderMark(leader, context)}
+        <figcaption><b>${esc(leader.name)}</b> ${esc(describeMark(leader, context))}</figcaption>
+      </figure>
+      <figure style="--accent:${last.color}">
+        ${renderMark(last, context)}
+        <figcaption><b>${esc(last.name)}</b> ${esc(describeMark(last, context))}</figcaption>
+      </figure>
+    </div>
+    <p class="legend-note">Original geometry. Not team logos, and not modelled on them.</p>
+  </section>`;
 }
 
 /* Every licence we accept except CC0 requires naming the author, so the credits
@@ -326,6 +354,7 @@ async function main() {
 
   const now = new Date();
   const leader = model.teams[0];
+  const markContext = { leaderPoints: leader.points, fieldSize: model.teams.length };
   const title = `The Order — ${model.season} F1 constructor standings`;
   const desc = `${model.season} Formula 1 constructor standings after round ${model.round}. ${leader.name} lead on ${leader.points} points. Scroll the championship top to bottom, with every points gap to scale.`;
 
@@ -338,7 +367,8 @@ async function main() {
     .replaceAll('{{TEAM_COUNT}}', String(model.teams.length))
     .replaceAll('{{RAIL}}', renderRail(model.teams))
     .replaceAll('{{HERO_NEXT}}', renderHeroNext(model.next))
-    .replaceAll('{{SECTIONS}}', renderSections(model.teams, portraits))
+    .replaceAll('{{SECTIONS}}', renderSections(model.teams, portraits, markContext))
+    .replaceAll('{{LEGEND}}', renderLegend(model.teams, markContext))
     .replaceAll('{{CREDITS}}', renderCredits(model.teams, portraits))
     .replaceAll('{{RACES}}', renderRaces(model.calendar, model.next))
     .replaceAll('{{UPDATED_ISO}}', now.toISOString())
