@@ -1,0 +1,511 @@
+{
+  "season": "2026",
+  "rounds": {
+    "1": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 43
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 27
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 10
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 8
+      },
+      "haas": {
+        "pos": 5,
+        "pts": 6
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 4
+      },
+      "audi": {
+        "pos": 7,
+        "pts": 2
+      },
+      "alpine": {
+        "pos": 8,
+        "pts": 1
+      },
+      "williams": {
+        "pos": 9,
+        "pts": 0
+      },
+      "cadillac": {
+        "pos": 10,
+        "pts": 0
+      },
+      "aston_martin": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "2": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 98
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 67
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 18
+      },
+      "haas": {
+        "pos": 4,
+        "pts": 17
+      },
+      "red_bull": {
+        "pos": 5,
+        "pts": 12
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 12
+      },
+      "alpine": {
+        "pos": 7,
+        "pts": 10
+      },
+      "audi": {
+        "pos": 8,
+        "pts": 2
+      },
+      "williams": {
+        "pos": 9,
+        "pts": 2
+      },
+      "cadillac": {
+        "pos": 10,
+        "pts": 0
+      },
+      "aston_martin": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "3": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 135
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 90
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 46
+      },
+      "haas": {
+        "pos": 4,
+        "pts": 18
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 16
+      },
+      "red_bull": {
+        "pos": 6,
+        "pts": 16
+      },
+      "rb": {
+        "pos": 7,
+        "pts": 14
+      },
+      "audi": {
+        "pos": 8,
+        "pts": 2
+      },
+      "williams": {
+        "pos": 9,
+        "pts": 2
+      },
+      "cadillac": {
+        "pos": 10,
+        "pts": 0
+      },
+      "aston_martin": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "4": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 180
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 110
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 94
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 30
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 23
+      },
+      "haas": {
+        "pos": 6,
+        "pts": 18
+      },
+      "rb": {
+        "pos": 7,
+        "pts": 14
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 5
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 2
+      },
+      "cadillac": {
+        "pos": 10,
+        "pts": 0
+      },
+      "aston_martin": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "5": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 219
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 147
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 106
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 57
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 35
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 21
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 19
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 7
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 2
+      },
+      "cadillac": {
+        "pos": 10,
+        "pts": 0
+      },
+      "aston_martin": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "6": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 244
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 165
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 116
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 69
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 50
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 35
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 11
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 2
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "7": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 262
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 190
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 141
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 89
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 57
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 41
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 11
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 2
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "8": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 302
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 204
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 159
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 115
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 57
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 44
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 11
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 2
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "9": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 333
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 255
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 179
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 128
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 60
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 59
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 11
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 6
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "10": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 358
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 285
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 195
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 151
+      },
+      "alpine": {
+        "pos": 5,
+        "pts": 61
+      },
+      "rb": {
+        "pos": 6,
+        "pts": 61
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "williams": {
+        "pos": 8,
+        "pts": 11
+      },
+      "audi": {
+        "pos": 9,
+        "pts": 10
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    },
+    "11": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 379
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 307
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 220
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 177
+      },
+      "rb": {
+        "pos": 5,
+        "pts": 66
+      },
+      "alpine": {
+        "pos": 6,
+        "pts": 61
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "audi": {
+        "pos": 8,
+        "pts": 12
+      },
+      "williams": {
+        "pos": 9,
+        "pts": 11
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
+    }
+  }
+}

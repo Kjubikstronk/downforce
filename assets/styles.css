@@ -350,6 +350,37 @@ a {
   color: var(--dim);
 }
 
+/* --- season trace: this team's rank against the rest of the field ---------- */
+
+.trace {
+  margin: 0;
+  max-width: 22rem;
+}
+
+/* Scales uniformly. Stretching the viewBox to a fixed height would turn the
+   endpoint dot into an ellipse and thin the strokes unevenly. */
+.trace svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.trace-end {
+  font-family: var(--data);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--accent-ink);
+}
+
+.trace figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--data);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+
 .drivers {
   list-style: none;
   margin: 0;
@@ -477,17 +508,21 @@ a {
 
 /* --- gap corridor: height is the points gap, to scale --------------------- */
 
+/* Height is the points gap, to scale, so it can legitimately be a couple of
+   pixels. Nothing inside is allowed to hold the corridor open — the label is
+   taken out of flow and centred on the seam, where it reads as a boundary
+   marker rather than as the contents of a room. */
 .gap {
-  height: var(--gap-h, 20vh);
+  height: var(--gap-h, 20svh);
+  min-height: 2px;
   position: relative;
-  display: grid;
-  place-items: center;
   margin-left: var(--rail-w);
 }
 
 .gap::before {
   content: '';
   position: absolute;
+  left: 50%;
   top: 0;
   bottom: 0;
   width: 1px;
@@ -495,7 +530,11 @@ a {
 }
 
 .gap-label {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
   padding: 0.4rem 0.9rem;
   background: var(--void);
   font-family: var(--data);

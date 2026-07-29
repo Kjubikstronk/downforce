@@ -148,6 +148,8 @@
   },
   "gasly": {
     "file": "drivers/gasly.png",
+    "bytes": 401748,
+    "minimised": true,
     "author": "nabtifal",
     "licence": "CC BY 2.0",
     "licenceUrl": "https://creativecommons.org/licenses/by/2.0",

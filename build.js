@@ -7,6 +7,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ensurePortraits } from './lib/portraits.js';
 import { renderMark, describeMark } from './lib/marks.js';
+import { ensureProgression, seriesFor } from './lib/progression.js';
+import { renderTrace } from './lib/sparkline.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DATA = path.join(ROOT, 'data');
@@ -145,14 +147,20 @@ function buildModel(consRaw, drvRaw, raceRaw) {
 
 /* ---------- render -------------------------------------------------------- */
 
-/* The corridor between two teams is as tall as the points gap between them,
-   scaled against the largest gap in the field. This is the whole idea of the
-   page, so it lives in one small function: gap in points -> gap in viewports. */
-const MIN_GAP_VH = 8;
-const MAX_GAP_VH = 68;
+/* The corridor between two teams is as tall as the points gap between them.
+   This is the whole idea of the page, so it lives in one small function: points
+   in, viewport height out.
+
+   It must stay strictly proportional. An earlier version carried a minimum
+   height, which made a 1-point gap read the same as a 40-point one and turned
+   the hero's claim into a lie — the smallest gaps were exaggerated more than
+   thirtyfold. A one-point deficit is now about two pixels, and teams level on
+   points sit flush against each other, which is exactly what level means. The
+   label is positioned over the seam so it survives a corridor of no height. */
+const MAX_GAP_SVH = 68;
 
 function corridorHeight(gap, maxGap) {
-  return (MIN_GAP_VH + (gap / Math.max(maxGap, 1)) * (MAX_GAP_VH - MIN_GAP_VH)).toFixed(1);
+  return ((gap / Math.max(maxGap, 1)) * MAX_GAP_SVH).toFixed(3);
 }
 
 /* A portrait, or the driver's initials when we have no freely-licensed one.
@@ -172,7 +180,8 @@ function renderShot(driver, portraits) {
   return `<figure class="driver-shot"><img src="assets/${esc(credit.file)}" alt="" loading="lazy" decoding="async">${number}</figure>`;
 }
 
-function renderTeam(team, portraits, context) {
+function renderTeam(team, ctx) {
+  const { portraits, markContext, allSeries, fieldSize } = ctx;
   const drivers = team.drivers.length
     ? team.drivers
         .map(
@@ -194,9 +203,10 @@ function renderTeam(team, portraits, context) {
   return `  <section class="team" id="p${team.position}" data-color="${team.color}" data-pos="${team.position}" aria-labelledby="t${team.position}">
     <p class="team-pos" aria-hidden="true">${pad2(team.position)}</p>
     <div class="team-body">
-      <h2 class="team-name" id="t${team.position}"><span class="mark-holder" title="${esc(describeMark(team, context))}">${renderMark(team, context)}</span>${esc(team.name)}</h2>
+      <h2 class="team-name" id="t${team.position}"><span class="mark-holder" title="${esc(describeMark(team, markContext))}">${renderMark(team, markContext)}</span>${esc(team.name)}</h2>
       <p class="team-meta">P${team.position} &middot; ${esc(team.nationality)} &middot; ${winLabel}</p>
       <p class="team-points"><b>${team.points}</b><i>points</i></p>
+      ${renderTrace(team.id, allSeries, fieldSize)}
       <ul class="drivers">
 ${drivers}
       </ul>
@@ -204,13 +214,13 @@ ${drivers}
   </section>`;
 }
 
-function renderSections(teams, portraits, context) {
+function renderSections(teams, ctx) {
   const gaps = teams.slice(1).map((t, i) => teams[i].points - t.points);
   const maxGap = Math.max(...gaps, 1);
   const out = [];
 
   teams.forEach((team, i) => {
-    out.push(renderTeam(team, portraits, context));
+    out.push(renderTeam(team, ctx));
 
     const nextTeam = teams[i + 1];
     if (!nextTeam) return;
@@ -352,6 +362,15 @@ async function main() {
   const allDrivers = model.teams.flatMap((t) => t.drivers).filter((d) => d.wikiTitle);
   const portraits = await ensurePortraits(allDrivers, { assetsDir: ASSETS, dataDir: DATA });
 
+  // One standings snapshot per completed round. A finished round never changes,
+  // so this costs one request per rebuild once the cache is warm.
+  const latestRound = Number(model.round) || 0;
+  const progression = await ensureProgression(model.season, latestRound, { dataDir: DATA });
+  const allSeries = {};
+  for (const team of model.teams) {
+    allSeries[team.id] = seriesFor(progression, team.id, latestRound);
+  }
+
   const now = new Date();
   const leader = model.teams[0];
   const markContext = { leaderPoints: leader.points, fieldSize: model.teams.length };
@@ -367,7 +386,15 @@ async function main() {
     .replaceAll('{{TEAM_COUNT}}', String(model.teams.length))
     .replaceAll('{{RAIL}}', renderRail(model.teams))
     .replaceAll('{{HERO_NEXT}}', renderHeroNext(model.next))
-    .replaceAll('{{SECTIONS}}', renderSections(model.teams, portraits, markContext))
+    .replaceAll(
+      '{{SECTIONS}}',
+      renderSections(model.teams, {
+        portraits,
+        markContext,
+        allSeries,
+        fieldSize: model.teams.length,
+      })
+    )
     .replaceAll('{{LEGEND}}', renderLegend(model.teams, markContext))
     .replaceAll('{{CREDITS}}', renderCredits(model.teams, portraits))
     .replaceAll('{{RACES}}', renderRaces(model.calendar, model.next))
