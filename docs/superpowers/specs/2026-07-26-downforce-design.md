@@ -1,4 +1,4 @@
-# f1page — scroll-driven F1 standings fanpage
+# Downforce — scroll-driven F1 standings fanpage
 
 ## Purpose
 
@@ -29,7 +29,7 @@ fanpage) project's proven pattern:
 - GitHub Actions workflow rebuilds on a schedule (start at every 6h, same
   cadence as press-it; can be tightened around race weekends later) and
   commits the refreshed output.
-- GitHub Pages for hosting, deployed from this new repo (`f1page`). Custom
+- GitHub Pages for hosting, deployed from this new repo (`downforce`). Custom
   domain can be added later the same way `taemin.online` was added to
   press-it — not needed for the initial launch.
 

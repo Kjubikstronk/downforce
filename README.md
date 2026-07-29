@@ -1,7 +1,10 @@
-# f1page — The Order
+# Downforce
 
 The Formula 1 constructors' championship, read as a descent. P1 sits at the top
 of the page; scrolling down walks you to last place.
+
+Named for the aerodynamic force that presses a car into the track, which is
+also what the page does to the reader.
 
 The idea the page is built on: **the distance you scroll between any two teams
 is the points gap between them, to scale.** A 111-point deficit is a long, empty

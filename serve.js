@@ -44,5 +44,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`f1page running at http://localhost:${port}`);
+  console.log(`Downforce running at http://localhost:${port}`);
 });

@@ -1,8 +1,8 @@
 {
-  "name": "f1page",
+  "name": "downforce",
   "version": "1.0.0",
   "private": true,
-  "description": "The championship order as a descent — scroll distance between teams is the points gap, to scale.",
+  "description": "The F1 championship as a descent — scroll distance between teams is the points gap, to scale.",
   "type": "module",
   "scripts": {
     "build": "node build.js",

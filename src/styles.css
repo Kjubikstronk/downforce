@@ -663,6 +663,29 @@ a {
   color: var(--text);
 }
 
+/* Hairline ring so flags with white or pale fields — Japan, Canada, Qatar —
+   keep an edge against the dark surface. */
+.flag {
+  width: 1.25em;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  vertical-align: -0.18em;
+  margin-right: 0.5em;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.next-race-name .flag {
+  width: 1em;
+  margin-right: 0.45em;
+  vertical-align: -0.05em;
+}
+
+.races li.is-done .flag {
+  opacity: 0.45;
+}
+
 .legend-note {
   font-family: var(--data);
   font-size: 0.7rem;

@@ -30,7 +30,7 @@ jobs:
 
       - name: Build
         env:
-          SITE_URL: ${{ vars.SITE_URL || 'https://kjubikstronk.github.io/f1page/' }}
+          SITE_URL: ${{ vars.SITE_URL || 'https://kjubikstronk.github.io/downforce/' }}
         run: node build.js
 
       - name: Commit refreshed data

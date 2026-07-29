@@ -1,4 +1,4 @@
-/* f1page — scroll behaviour.
+/* Downforce — scroll behaviour.
    The page works without this file: it is a readable, ordered list of teams.
    This adds the descent — the accent colour bleeds from one team to the next
    across the gap corridors, whose height is already the points gap to scale. */

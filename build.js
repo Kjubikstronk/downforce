@@ -1,4 +1,4 @@
-/* f1page build — fetch the current F1 season from Jolpica-F1, then render a
+/* Downforce build — fetch the current F1 season from Jolpica-F1, then render a
    static page. Keeps the last good data if the API is unreachable, so a failed
    scheduled run degrades to "slightly stale" rather than "broken". */
 
@@ -9,13 +9,14 @@ import { ensurePortraits } from './lib/portraits.js';
 import { renderMark, describeMark } from './lib/marks.js';
 import { ensureProgression, seriesFor } from './lib/progression.js';
 import { renderTrace } from './lib/sparkline.js';
+import { ensureFlags, renderFlag } from './lib/flags.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DATA = path.join(ROOT, 'data');
 const ASSETS = path.join(ROOT, 'assets');
 const SRC = path.join(ROOT, 'src');
 
-const SITE_URL = process.env.SITE_URL || 'https://kjubikstronk.github.io/f1page/';
+const SITE_URL = process.env.SITE_URL || 'https://kjubikstronk.github.io/downforce/';
 const API = 'https://api.jolpi.ca/ergast/f1/current';
 
 /* Team colours. Approximations chosen so each section reads as a distinct
@@ -59,7 +60,7 @@ async function fetchJSON(url, tries = 3) {
       const timer = setTimeout(() => ctrl.abort(), 20000);
       const res = await fetch(url, {
         signal: ctrl.signal,
-        headers: { 'user-agent': 'f1page/1.0 (static site build)' },
+        headers: { 'user-agent': 'downforce/1.0 (static site build)' },
       });
       clearTimeout(timer);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -248,19 +249,19 @@ function renderRail(teams) {
     .join('\n');
 }
 
-function renderHeroNext(next) {
+function renderHeroNext(next, flags) {
   if (!next) {
     return `    <div class="next-race"><p class="next-race-name">Season complete</p></div>`;
   }
   return `    <div class="next-race">
       <p class="eyebrow">Next race &middot; round ${next.round}</p>
-      <p class="next-race-name">${esc(next.name)}</p>
+      <p class="next-race-name">${renderFlag(next.country, flags)}${esc(next.name)}</p>
       <p class="next-race-when" data-iso="${next.iso}">${next.iso.slice(0, 10)}</p>
       <p class="next-race-where">${esc(next.circuit)}, ${esc(next.locality)}</p>
     </div>`;
 }
 
-function renderRaces(calendar, next) {
+function renderRaces(calendar, next, flags) {
   const now = Date.now();
   return calendar
     .map((r) => {
@@ -269,7 +270,7 @@ function renderRaces(calendar, next) {
       const cls = [done ? 'is-done' : '', isNext ? 'is-next' : ''].filter(Boolean).join(' ');
       return `    <li${cls ? ` class="${cls}"` : ''}>
       <span class="race-round">R${pad2(r.round)}</span>
-      <span class="race-name">${esc(r.name)} <span class="race-round">&mdash; ${esc(r.locality)}, ${esc(r.country)}</span></span>
+      <span class="race-name">${renderFlag(r.country, flags)}${esc(r.name)} <span class="race-round">&mdash; ${esc(r.locality)}, ${esc(r.country)}</span></span>
       <span class="race-when" data-iso="${r.iso}">${r.iso.slice(0, 10)}</span>
     </li>`;
     })
@@ -370,10 +371,15 @@ async function main() {
     allSeries[team.id] = seriesFor(progression, team.id, latestRound);
   }
 
+  const flags = await ensureFlags(
+    model.calendar.map((r) => r.country),
+    { assetsDir: ASSETS }
+  );
+
   const now = new Date();
   const leader = model.teams[0];
   const markContext = { leaderPoints: leader.points, fieldSize: model.teams.length };
-  const title = `The Order — ${model.season} F1 constructor standings`;
+  const title = `Downforce — ${model.season} F1 constructor standings`;
   const desc = `${model.season} Formula 1 constructor standings after round ${model.round}. ${leader.name} lead on ${leader.points} points. Scroll the championship top to bottom, with every points gap to scale.`;
 
   const html = (await readFile(path.join(SRC, 'template.html'), 'utf8'))
@@ -384,7 +390,7 @@ async function main() {
     .replaceAll('{{ROUND}}', esc(model.round))
     .replaceAll('{{TEAM_COUNT}}', String(model.teams.length))
     .replaceAll('{{RAIL}}', renderRail(model.teams))
-    .replaceAll('{{HERO_NEXT}}', renderHeroNext(model.next))
+    .replaceAll('{{HERO_NEXT}}', renderHeroNext(model.next, flags))
     .replaceAll(
       '{{SECTIONS}}',
       renderSections(model.teams, {
@@ -396,7 +402,7 @@ async function main() {
     )
     .replaceAll('{{LEGEND}}', renderLegend(model.teams, markContext))
     .replaceAll('{{CREDITS}}', renderCredits(model.teams, portraits))
-    .replaceAll('{{RACES}}', renderRaces(model.calendar, model.next))
+    .replaceAll('{{RACES}}', renderRaces(model.calendar, model.next, flags))
     .replaceAll('{{UPDATED_ISO}}', now.toISOString())
     .replaceAll(
       '{{UPDATED}}',
