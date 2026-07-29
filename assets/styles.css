@@ -440,6 +440,9 @@ a {
   background: #14181f;
   border: 1px solid var(--line);
   isolation: isolate;
+  /* So the racing number can size off the photo instead of off the root. A
+     fixed rem size swamps the card once the column narrows. */
+  container-type: inline-size;
 }
 
 .driver-shot img {
@@ -465,9 +468,9 @@ a {
   content: '';
   position: absolute;
   inset: auto 0 0 0;
-  height: 55%;
+  height: 46%;
   z-index: 2;
-  background: linear-gradient(to top, rgba(4, 5, 7, 0.9), transparent);
+  background: linear-gradient(to top, rgba(4, 5, 7, 0.92), transparent);
   pointer-events: none;
 }
 
@@ -486,12 +489,12 @@ a {
 /* The car number — authentic F1 furniture, and nothing anyone owns. */
 .driver-no {
   position: absolute;
-  left: 0.5rem;
-  bottom: 0.15rem;
+  left: 5cqi;
+  bottom: 2cqi;
   z-index: 3;
   font-family: var(--data);
   font-weight: 600;
-  font-size: 2.6rem;
+  font-size: 20cqi;
   line-height: 1;
   letter-spacing: -0.05em;
   color: var(--text);
@@ -775,9 +778,12 @@ a {
     font-size: clamp(4.5rem, 26vw, 9rem);
   }
 
-  .drivers li {
-    grid-template-columns: 2.8rem 1fr auto;
-    gap: 0.7rem;
+  .drivers {
+    gap: 0.9rem;
+  }
+
+  .driver {
+    flex: 1 1 8rem;
   }
 
   .hero-foot {

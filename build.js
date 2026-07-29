@@ -284,7 +284,7 @@ function renderLegend(teams, context) {
 
   return `  <section class="legend">
     <h2>Reading the marks</h2>
-    <p>Each team's mark is drawn from its own season rather than from its badge. Three things vary:</p>
+    <p>Every mark is drawn from that team's season. Three things vary:</p>
     <dl>
       <div><dt>Blades</dt><dd>One per race win. More wins, denser mark.</dd></div>
       <div><dt>Lean</dt><dd>Championship position. The leader stands upright; the tail leans away.</dd></div>
@@ -300,7 +300,6 @@ function renderLegend(teams, context) {
         <figcaption><b>${esc(last.name)}</b> ${esc(describeMark(last, context))}</figcaption>
       </figure>
     </div>
-    <p class="legend-note">Original geometry. Not team logos, and not modelled on them.</p>
   </section>`;
 }
 
