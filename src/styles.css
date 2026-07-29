@@ -58,6 +58,9 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  /* Slashed zero reads as an instrument readout. Only the mono figures carry
+     digits, so applying it here is effectively scoped to them. */
+  font-feature-settings: 'zero' 1;
 }
 
 h1,
@@ -148,6 +151,34 @@ a {
   background: linear-gradient(to right, rgba(8, 9, 11, 0.94), rgba(8, 9, 11, 0.4));
 }
 
+/* Reads the points you are standing on. Tabular figures so the digits do not
+   shuffle sideways while it counts down. */
+.altimeter {
+  position: absolute;
+  top: 1.4rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--data);
+  line-height: 1.1;
+}
+
+.altimeter b {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-ink);
+}
+
+.altimeter small {
+  display: block;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
 .rail-tick {
   display: flex;
   align-items: center;
@@ -155,7 +186,6 @@ a {
   font-family: var(--data);
   font-size: 0.6rem;
   color: var(--dimmer);
-  transition: color 250ms ease;
 }
 
 .rail-tick::after {

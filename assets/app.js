@@ -40,6 +40,21 @@
     root.style.setProperty('--accent', color);
   }
 
+  /* The altimeter reads the points you are standing on. Inside a team section
+     that is simply their total; falling through a corridor it interpolates, so
+     a 111-point gap is 111 units of readout ticking away under you.
+
+     It steps on whole points and never tweens. Instruments snap — an odometer
+     roll or an eased counter would read as a toy. */
+  var altimeter = document.querySelector('[data-altimeter]');
+  var currentPts = null;
+
+  function setPoints(value) {
+    if (!altimeter || value === currentPts) return;
+    currentPts = value;
+    altimeter.textContent = value;
+  }
+
   var currentPos = '';
   function setLiveTick(pos) {
     if (pos === currentPos) return;
@@ -75,6 +90,8 @@
         height: rect.height || 1,
         from: hexToRgb(isTeam ? el.dataset.color : el.dataset.from),
         to: hexToRgb(isTeam ? el.dataset.color : el.dataset.to),
+        fromPts: Number(isTeam ? el.dataset.pts : el.dataset.fromPts),
+        toPts: Number(isTeam ? el.dataset.pts : el.dataset.toPts),
         solid: isTeam,
         pos: lastPos,
       });
@@ -91,11 +108,13 @@
 
     if (ref <= first.top) {
       setAccent(rgb(first.from));
+      setPoints(first.fromPts);
       setLiveTick(first.pos);
       return;
     }
     if (ref >= last.top + last.height) {
       setAccent(rgb(last.to));
+      setPoints(last.toPts);
       setLiveTick(last.pos);
       return;
     }
@@ -105,12 +124,14 @@
       if (ref >= b.top && ref < b.top + b.height) {
         if (b.solid) {
           setAccent(rgb(b.from));
+          setPoints(b.fromPts);
         } else {
           var t = (ref - b.top) / b.height;
           // Scrubbing a colour frame-by-frame against the wheel is exactly the
           // motion a reduced-motion visitor asked not to have. They get one
           // switch at the midpoint instead, softened by the CSS transition.
           setAccent(reduced ? rgb(t < 0.5 ? b.from : b.to) : mix(b.from, b.to, t));
+          setPoints(Math.round(b.fromPts + (b.toPts - b.fromPts) * t));
         }
         setLiveTick(b.pos);
         return;

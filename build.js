@@ -200,7 +200,7 @@ function renderTeam(team, ctx) {
   const winLabel =
     team.wins === 0 ? 'No wins yet' : `${team.wins} win${team.wins === 1 ? '' : 's'}`;
 
-  return `  <section class="team" id="p${team.position}" data-color="${team.color}" data-pos="${team.position}" aria-labelledby="t${team.position}">
+  return `  <section class="team" id="p${team.position}" data-color="${team.color}" data-pos="${team.position}" data-pts="${team.points}" aria-labelledby="t${team.position}">
     <p class="team-pos" aria-hidden="true">${pad2(team.position)}</p>
     <div class="team-body">
       <h2 class="team-name" id="t${team.position}"><span class="mark-holder" title="${esc(describeMark(team, markContext))}">${renderMark(team, markContext)}</span>${esc(team.name)}</h2>
@@ -231,7 +231,7 @@ function renderSections(teams, ctx) {
         ? 'Level on points'
         : `<b>${gap}</b> point${gap === 1 ? '' : 's'} back`;
 
-    out.push(`  <div class="gap" style="--gap-h:${corridorHeight(gap, maxGap)}svh" data-from="${team.color}" data-to="${nextTeam.color}" aria-hidden="true">
+    out.push(`  <div class="gap" style="--gap-h:${corridorHeight(gap, maxGap)}svh" data-from="${team.color}" data-to="${nextTeam.color}" data-from-pts="${team.points}" data-to-pts="${nextTeam.points}" aria-hidden="true">
     <p class="gap-label">${label}</p>
   </div>`);
   });
