@@ -100,6 +100,27 @@ scroll position, just without pinning the section in place.
   (simulate by pointing at a bad URL) — confirms the last-good-data fallback
   actually works rather than crashing the build.
 
+## Amendments during build
+
+Kept as a record of where the original design was wrong or incomplete.
+
+- **Eleven teams, not ten.** 2026 has Cadillac as an eleventh entry and Audi in
+  place of Sauber. The build derives the field size from the data.
+- **The corridor mapping had a floor**, which made the hero's central claim
+  false — a 1-point gap and a 40-point gap looked far more alike than they are.
+  It is now strictly proportional, with labels moved onto the seam so a
+  corridor can have no height at all.
+- **Driver portraits added** from Wikimedia Commons, with per-file licence
+  checks and rendered credits. Not in the original scope, which assumed no
+  imagery was safely available.
+- **Constructor marks added.** The original spec ruled out team logos on
+  trademark grounds and stopped there. The marks are generated from each team's
+  own season instead, so they carry meaning rather than decoration.
+- **Season traces and a points altimeter added** once per-round standings were
+  confirmed available from the same API.
+- **Data licence is CC BY-NC-SA 4.0.** Non-commercial. This was not established
+  when the spec was written and constrains any future monetisation.
+
 ## Repo / hosting
 
 - New repo `f1page` at `Desktop\f1page`, separate from the Taemin fanpage
