@@ -506,6 +506,52 @@
         "pos": 11,
         "pts": 0
       }
+    },
+    "12": {
+      "mercedes": {
+        "pos": 1,
+        "pts": 392
+      },
+      "ferrari": {
+        "pos": 2,
+        "pts": 316
+      },
+      "mclaren": {
+        "pos": 3,
+        "pts": 230
+      },
+      "red_bull": {
+        "pos": 4,
+        "pts": 180
+      },
+      "rb": {
+        "pos": 5,
+        "pts": 66
+      },
+      "alpine": {
+        "pos": 6,
+        "pts": 62
+      },
+      "haas": {
+        "pos": 7,
+        "pts": 21
+      },
+      "audi": {
+        "pos": 8,
+        "pts": 12
+      },
+      "williams": {
+        "pos": 9,
+        "pts": 11
+      },
+      "aston_martin": {
+        "pos": 10,
+        "pts": 1
+      },
+      "cadillac": {
+        "pos": 11,
+        "pts": 0
+      }
     }
   }
 }

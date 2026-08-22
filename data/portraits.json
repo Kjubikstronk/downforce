@@ -154,5 +154,14 @@
     "licence": "CC BY 2.0",
     "licenceUrl": "https://creativecommons.org/licenses/by/2.0",
     "source": "https://commons.wikimedia.org/wiki/File:2022_French_Grand_Prix_(52279065728)_(midcrop).png"
+  },
+  "tsunoda": {
+    "file": "drivers/tsunoda.jpg",
+    "bytes": 81168,
+    "minimised": false,
+    "author": "Yu Chu Chin",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Yuki_Tsunoda_at_the_Melbourne_Walk_during_the_2026_Australian_Grand_Prix_(028A8096).jpg"
   }
 }
