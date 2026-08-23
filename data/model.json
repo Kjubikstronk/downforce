@@ -564,11 +564,11 @@
     }
   ],
   "next": {
-    "round": 12,
-    "name": "Dutch Grand Prix",
-    "circuit": "Circuit Park Zandvoort",
-    "locality": "Zandvoort",
-    "country": "Netherlands",
-    "iso": "2026-08-23T13:00:00Z"
+    "round": 13,
+    "name": "Italian Grand Prix",
+    "circuit": "Autodromo Nazionale di Monza",
+    "locality": "Monza",
+    "country": "Italy",
+    "iso": "2026-09-06T13:00:00Z"
   }
 }
