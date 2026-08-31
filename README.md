@@ -1,5 +1,7 @@
 # Downforce
 
+<img src="assets/banner.svg" alt="" width="960">
+
 The Formula 1 constructors' championship, read as a descent. P1 sits at the top
 of the page; scrolling down walks you to last place.
 
