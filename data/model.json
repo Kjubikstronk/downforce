@@ -7,8 +7,8 @@
       "name": "Mercedes",
       "nationality": "German",
       "position": 1,
-      "points": 468,
-      "wins": 9,
+      "points": 503,
+      "wins": 10,
       "color": "#00d7b6",
       "drivers": [
         {
@@ -19,7 +19,7 @@
           "last": "Antonelli",
           "number": "12",
           "wikiTitle": "Andrea_Kimi_Antonelli",
-          "points": 267,
+          "points": 292,
           "position": 1
         },
         {
@@ -30,7 +30,7 @@
           "last": "Russell",
           "number": "63",
           "wikiTitle": "George_Russell_(racing_driver)",
-          "points": 201,
+          "points": 211,
           "position": 2
         }
       ]
@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 346,
+      "points": 358,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -63,7 +63,7 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 155,
+          "points": 167,
           "position": 5
         }
       ]
@@ -73,7 +73,7 @@
       "name": "McLaren",
       "nationality": "British",
       "position": 3,
-      "points": 287,
+      "points": 306,
       "wins": 2,
       "color": "#ff8000",
       "drivers": [
@@ -85,7 +85,7 @@
           "last": "Norris",
           "number": "1",
           "wikiTitle": "Lando_Norris",
-          "points": 171,
+          "points": 186,
           "position": 4
         },
         {
@@ -96,7 +96,7 @@
           "last": "Piastri",
           "number": "81",
           "wikiTitle": "Oscar_Piastri",
-          "points": 116,
+          "points": 120,
           "position": 7
         }
       ]
@@ -106,7 +106,7 @@
       "name": "Red Bull",
       "nationality": "Austrian",
       "position": 4,
-      "points": 204,
+      "points": 230,
       "wins": 0,
       "color": "#3671c6",
       "drivers": [
@@ -118,7 +118,7 @@
           "last": "Verstappen",
           "number": "3",
           "wikiTitle": "Max_Verstappen",
-          "points": 127,
+          "points": 145,
           "position": 6
         },
         {
@@ -140,7 +140,7 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 51,
+          "points": 59,
           "position": 9
         }
       ]
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 75,
+      "points": 77,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
@@ -162,7 +162,7 @@
           "last": "Lindblad",
           "number": "41",
           "wikiTitle": "Arvid_Lindblad",
-          "points": 29,
+          "points": 31,
           "position": 11
         },
         {
@@ -183,7 +183,7 @@
       "name": "Alpine F1 Team",
       "nationality": "French",
       "position": 6,
-      "points": 62,
+      "points": 68,
       "wins": 0,
       "color": "#ff87bc",
       "drivers": [
@@ -206,7 +206,7 @@
           "last": "Colapinto",
           "number": "43",
           "wikiTitle": "Franco_Colapinto",
-          "points": 21,
+          "points": 27,
           "position": 12
         }
       ]
@@ -249,7 +249,7 @@
       "name": "Audi",
       "nationality": "German",
       "position": 8,
-      "points": 16,
+      "points": 17,
       "wins": 0,
       "color": "#9ad11f",
       "drivers": [
@@ -272,7 +272,7 @@
           "last": "Hülkenberg",
           "number": "27",
           "wikiTitle": "Nico_Hülkenberg",
-          "points": 6,
+          "points": 7,
           "position": 15
         }
       ]
