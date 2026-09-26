@@ -564,11 +564,11 @@
     }
   ],
   "next": {
-    "round": 15,
-    "name": "Azerbaijan Grand Prix",
-    "circuit": "Baku City Circuit",
-    "locality": "Baku",
-    "country": "Azerbaijan",
-    "iso": "2026-09-26T11:00:00Z"
+    "round": 16,
+    "name": "Bahrain Grand Prix in Malaysia",
+    "circuit": "Sepang International Circuit",
+    "locality": "Kuala Lumpur",
+    "country": "Malaysia",
+    "iso": "2026-10-04T07:00:00Z"
   }
 }
