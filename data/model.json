@@ -564,11 +564,11 @@
     }
   ],
   "next": {
-    "round": 16,
-    "name": "Bahrain Grand Prix in Malaysia",
-    "circuit": "Sepang International Circuit",
-    "locality": "Kuala Lumpur",
-    "country": "Malaysia",
-    "iso": "2026-10-04T07:00:00Z"
+    "round": 17,
+    "name": "Singapore Grand Prix",
+    "circuit": "Marina Bay Street Circuit",
+    "locality": "Marina Bay",
+    "country": "Singapore",
+    "iso": "2026-10-11T12:00:00Z"
   }
 }
