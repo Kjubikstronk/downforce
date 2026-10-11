@@ -7,7 +7,7 @@
       "name": "Mercedes",
       "nationality": "German",
       "position": 1,
-      "points": 561,
+      "points": 578,
       "wins": 11,
       "color": "#00d7b6",
       "drivers": [
@@ -19,7 +19,7 @@
           "last": "Antonelli",
           "number": "12",
           "wikiTitle": "Andrea_Kimi_Antonelli",
-          "points": 325,
+          "points": 340,
           "position": 1
         },
         {
@@ -30,7 +30,7 @@
           "last": "Russell",
           "number": "63",
           "wikiTitle": "George_Russell_(racing_driver)",
-          "points": 236,
+          "points": 238,
           "position": 2
         }
       ]
@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 418,
+      "points": 444,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -52,7 +52,7 @@
           "last": "Hamilton",
           "number": "44",
           "wikiTitle": "Lewis_Hamilton",
-          "points": 221,
+          "points": 229,
           "position": 3
         },
         {
@@ -63,8 +63,8 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 197,
-          "position": 4
+          "points": 215,
+          "position": 5
         }
       ]
     },
@@ -73,7 +73,7 @@
       "name": "McLaren",
       "nationality": "British",
       "position": 3,
-      "points": 317,
+      "points": 339,
       "wins": 2,
       "color": "#ff8000",
       "drivers": [
@@ -85,7 +85,7 @@
           "last": "Norris",
           "number": "1",
           "wikiTitle": "Lando_Norris",
-          "points": 189,
+          "points": 201,
           "position": 6
         },
         {
@@ -96,7 +96,7 @@
           "last": "Piastri",
           "number": "81",
           "wikiTitle": "Oscar_Piastri",
-          "points": 128,
+          "points": 138,
           "position": 7
         }
       ]
@@ -106,8 +106,8 @@
       "name": "Red Bull",
       "nationality": "Austrian",
       "position": 4,
-      "points": 306,
-      "wins": 1,
+      "points": 332,
+      "wins": 2,
       "color": "#3671c6",
       "drivers": [
         {
@@ -118,8 +118,8 @@
           "last": "Verstappen",
           "number": "3",
           "wikiTitle": "Max_Verstappen",
-          "points": 196,
-          "position": 5
+          "points": 221,
+          "position": 4
         },
         {
           "id": "hadjar",
@@ -129,7 +129,7 @@
           "last": "Hadjar",
           "number": "6",
           "wikiTitle": "Isack_Hadjar",
-          "points": 96,
+          "points": 97,
           "position": 8
         },
         {
@@ -140,7 +140,7 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 69,
+          "points": 75,
           "position": 9
         }
       ]
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 94,
+      "points": 100,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
@@ -249,10 +249,21 @@
       "name": "Audi",
       "nationality": "German",
       "position": 8,
-      "points": 19,
+      "points": 23,
       "wins": 0,
       "color": "#9ad11f",
       "drivers": [
+        {
+          "id": "hulkenberg",
+          "code": "HUL",
+          "name": "Nico Hülkenberg",
+          "first": "Nico",
+          "last": "Hülkenberg",
+          "number": "27",
+          "wikiTitle": "Nico_Hülkenberg",
+          "points": 13,
+          "position": 14
+        },
         {
           "id": "bortoleto",
           "code": "BOR",
@@ -262,17 +273,6 @@
           "number": "5",
           "wikiTitle": "Gabriel_Bortoleto",
           "points": 10,
-          "position": 14
-        },
-        {
-          "id": "hulkenberg",
-          "code": "HUL",
-          "name": "Nico Hülkenberg",
-          "first": "Nico",
-          "last": "Hülkenberg",
-          "number": "27",
-          "wikiTitle": "Nico_Hülkenberg",
-          "points": 9,
           "position": 15
         }
       ]
