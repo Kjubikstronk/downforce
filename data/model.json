@@ -1,6 +1,6 @@
 {
   "season": "2026",
-  "round": "17",
+  "round": "18",
   "teams": [
     {
       "id": "mercedes",
@@ -564,11 +564,11 @@
     }
   ],
   "next": {
-    "round": 18,
-    "name": "United States Grand Prix",
-    "circuit": "Circuit of the Americas",
-    "locality": "Austin",
-    "country": "USA",
-    "iso": "2026-10-25T20:00:00Z"
+    "round": 19,
+    "name": "Mexico City Grand Prix",
+    "circuit": "Autódromo Hermanos Rodríguez",
+    "locality": "Mexico City",
+    "country": "Mexico",
+    "iso": "2026-11-01T20:00:00Z"
   }
 }
