@@ -7,8 +7,8 @@
       "name": "Mercedes",
       "nationality": "German",
       "position": 1,
-      "points": 578,
-      "wins": 11,
+      "points": 607,
+      "wins": 12,
       "color": "#00d7b6",
       "drivers": [
         {
@@ -19,7 +19,7 @@
           "last": "Antonelli",
           "number": "12",
           "wikiTitle": "Andrea_Kimi_Antonelli",
-          "points": 340,
+          "points": 365,
           "position": 1
         },
         {
@@ -30,7 +30,7 @@
           "last": "Russell",
           "number": "63",
           "wikiTitle": "George_Russell_(racing_driver)",
-          "points": 238,
+          "points": 242,
           "position": 2
         }
       ]
@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 444,
+      "points": 474,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -52,7 +52,7 @@
           "last": "Hamilton",
           "number": "44",
           "wikiTitle": "Lewis_Hamilton",
-          "points": 229,
+          "points": 241,
           "position": 3
         },
         {
@@ -63,41 +63,8 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 215,
+          "points": 233,
           "position": 5
-        }
-      ]
-    },
-    {
-      "id": "mclaren",
-      "name": "McLaren",
-      "nationality": "British",
-      "position": 3,
-      "points": 339,
-      "wins": 2,
-      "color": "#ff8000",
-      "drivers": [
-        {
-          "id": "norris",
-          "code": "NOR",
-          "name": "Lando Norris",
-          "first": "Lando",
-          "last": "Norris",
-          "number": "1",
-          "wikiTitle": "Lando_Norris",
-          "points": 201,
-          "position": 6
-        },
-        {
-          "id": "piastri",
-          "code": "PIA",
-          "name": "Oscar Piastri",
-          "first": "Oscar",
-          "last": "Piastri",
-          "number": "81",
-          "wikiTitle": "Oscar_Piastri",
-          "points": 138,
-          "position": 7
         }
       ]
     },
@@ -105,8 +72,8 @@
       "id": "red_bull",
       "name": "Red Bull",
       "nationality": "Austrian",
-      "position": 4,
-      "points": 332,
+      "position": 3,
+      "points": 355,
       "wins": 2,
       "color": "#3671c6",
       "drivers": [
@@ -118,7 +85,7 @@
           "last": "Verstappen",
           "number": "3",
           "wikiTitle": "Max_Verstappen",
-          "points": 221,
+          "points": 236,
           "position": 4
         },
         {
@@ -129,7 +96,7 @@
           "last": "Hadjar",
           "number": "6",
           "wikiTitle": "Isack_Hadjar",
-          "points": 97,
+          "points": 105,
           "position": 8
         },
         {
@@ -140,8 +107,41 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 75,
+          "points": 77,
           "position": 9
+        }
+      ]
+    },
+    {
+      "id": "mclaren",
+      "name": "McLaren",
+      "nationality": "British",
+      "position": 4,
+      "points": 355,
+      "wins": 2,
+      "color": "#ff8000",
+      "drivers": [
+        {
+          "id": "norris",
+          "code": "NOR",
+          "name": "Lando Norris",
+          "first": "Lando",
+          "last": "Norris",
+          "number": "1",
+          "wikiTitle": "Lando_Norris",
+          "points": 211,
+          "position": 6
+        },
+        {
+          "id": "piastri",
+          "code": "PIA",
+          "name": "Oscar Piastri",
+          "first": "Oscar",
+          "last": "Piastri",
+          "number": "81",
+          "wikiTitle": "Oscar_Piastri",
+          "points": 144,
+          "position": 7
         }
       ]
     },
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 100,
+      "points": 102,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
@@ -183,7 +183,7 @@
       "name": "Alpine F1 Team",
       "nationality": "French",
       "position": 6,
-      "points": 68,
+      "points": 69,
       "wins": 0,
       "color": "#ff87bc",
       "drivers": [
@@ -195,7 +195,7 @@
           "last": "Gasly",
           "number": "10",
           "wikiTitle": "Pierre_Gasly",
-          "points": 41,
+          "points": 42,
           "position": 10
         },
         {
