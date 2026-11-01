@@ -1,6 +1,6 @@
 {
   "season": "2026",
-  "round": "18",
+  "round": "19",
   "teams": [
     {
       "id": "mercedes",
@@ -241,6 +241,17 @@
           "wikiTitle": "Esteban_Ocon",
           "points": 7,
           "position": 16
+        },
+        {
+          "id": "ryo_hirakawa",
+          "code": "HIR",
+          "name": "Ryo Hirakawa",
+          "first": "Ryo",
+          "last": "Hirakawa",
+          "number": null,
+          "wikiTitle": "",
+          "points": 0,
+          "position": 24
         }
       ]
     },
