@@ -575,11 +575,11 @@
     }
   ],
   "next": {
-    "round": 19,
-    "name": "Mexico City Grand Prix",
-    "circuit": "Autódromo Hermanos Rodríguez",
-    "locality": "Mexico City",
-    "country": "Mexico",
-    "iso": "2026-11-01T20:00:00Z"
+    "round": 20,
+    "name": "Brazilian Grand Prix",
+    "circuit": "Autódromo José Carlos Pace",
+    "locality": "São Paulo",
+    "country": "Brazil",
+    "iso": "2026-11-08T17:00:00Z"
   }
 }
