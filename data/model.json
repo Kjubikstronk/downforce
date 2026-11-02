@@ -73,7 +73,7 @@
       "name": "Red Bull",
       "nationality": "Austrian",
       "position": 3,
-      "points": 380,
+      "points": 382,
       "wins": 3,
       "color": "#3671c6",
       "drivers": [
@@ -96,7 +96,7 @@
           "last": "Hadjar",
           "number": "6",
           "wikiTitle": "Isack_Hadjar",
-          "points": 105,
+          "points": 107,
           "position": 8
         },
         {
@@ -107,7 +107,7 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 79,
+          "points": 83,
           "position": 9
         }
       ]
@@ -117,7 +117,7 @@
       "name": "McLaren",
       "nationality": "British",
       "position": 4,
-      "points": 371,
+      "points": 365,
       "wins": 2,
       "color": "#ff8000",
       "drivers": [
@@ -140,7 +140,7 @@
           "last": "Piastri",
           "number": "81",
           "wikiTitle": "Oscar_Piastri",
-          "points": 150,
+          "points": 144,
           "position": 7
         }
       ]
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 104,
+      "points": 108,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
@@ -183,7 +183,7 @@
       "name": "Alpine F1 Team",
       "nationality": "French",
       "position": 6,
-      "points": 74,
+      "points": 69,
       "wins": 0,
       "color": "#ff87bc",
       "drivers": [
@@ -195,7 +195,7 @@
           "last": "Gasly",
           "number": "10",
           "wikiTitle": "Pierre_Gasly",
-          "points": 43,
+          "points": 42,
           "position": 10
         },
         {
@@ -206,7 +206,7 @@
           "last": "Colapinto",
           "number": "43",
           "wikiTitle": "Franco_Colapinto",
-          "points": 31,
+          "points": 27,
           "position": 12
         }
       ]
@@ -216,7 +216,7 @@
       "name": "Haas F1 Team",
       "nationality": "American",
       "position": 7,
-      "points": 30,
+      "points": 31,
       "wins": 0,
       "color": "#b6babd",
       "drivers": [
@@ -250,8 +250,8 @@
           "last": "Hirakawa",
           "number": "50",
           "wikiTitle": "Ryo_Hirakawa",
-          "points": 0,
-          "position": 23
+          "points": 1,
+          "position": 21
         }
       ]
     },
@@ -260,10 +260,21 @@
       "name": "Audi",
       "nationality": "German",
       "position": 8,
-      "points": 23,
+      "points": 27,
       "wins": 0,
       "color": "#9ad11f",
       "drivers": [
+        {
+          "id": "bortoleto",
+          "code": "BOR",
+          "name": "Gabriel Bortoleto",
+          "first": "Gabriel",
+          "last": "Bortoleto",
+          "number": "5",
+          "wikiTitle": "Gabriel_Bortoleto",
+          "points": 14,
+          "position": 14
+        },
         {
           "id": "hulkenberg",
           "code": "HUL",
@@ -273,17 +284,6 @@
           "number": "27",
           "wikiTitle": "Nico_Hülkenberg",
           "points": 13,
-          "position": 14
-        },
-        {
-          "id": "bortoleto",
-          "code": "BOR",
-          "name": "Gabriel Bortoleto",
-          "first": "Gabriel",
-          "last": "Bortoleto",
-          "number": "5",
-          "wikiTitle": "Gabriel_Bortoleto",
-          "points": 10,
           "position": 15
         }
       ]
@@ -350,7 +350,7 @@
           "number": "18",
           "wikiTitle": "Lance_Stroll",
           "points": 0,
-          "position": 21
+          "position": 22
         }
       ]
     },
@@ -372,7 +372,7 @@
           "number": "77",
           "wikiTitle": "Valtteri_Bottas",
           "points": 0,
-          "position": 22
+          "position": 23
         },
         {
           "id": "perez",
