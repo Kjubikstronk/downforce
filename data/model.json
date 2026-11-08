@@ -7,7 +7,7 @@
       "name": "Mercedes",
       "nationality": "German",
       "position": 1,
-      "points": 630,
+      "points": 652,
       "wins": 12,
       "color": "#00d7b6",
       "drivers": [
@@ -19,7 +19,7 @@
           "last": "Antonelli",
           "number": "12",
           "wikiTitle": "Andrea_Kimi_Antonelli",
-          "points": 380,
+          "points": 390,
           "position": 1
         },
         {
@@ -30,8 +30,8 @@
           "last": "Russell",
           "number": "63",
           "wikiTitle": "George_Russell_(racing_driver)",
-          "points": 250,
-          "position": 4
+          "points": 262,
+          "position": 3
         }
       ]
     },
@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 504,
+      "points": 512,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -52,8 +52,8 @@
           "last": "Hamilton",
           "number": "44",
           "wikiTitle": "Lewis_Hamilton",
-          "points": 259,
-          "position": 3
+          "points": 261,
+          "position": 4
         },
         {
           "id": "leclerc",
@@ -63,7 +63,7 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 245,
+          "points": 251,
           "position": 5
         }
       ]
@@ -73,7 +73,7 @@
       "name": "Red Bull",
       "nationality": "Austrian",
       "position": 3,
-      "points": 382,
+      "points": 415,
       "wins": 3,
       "color": "#3671c6",
       "drivers": [
@@ -85,7 +85,7 @@
           "last": "Verstappen",
           "number": "3",
           "wikiTitle": "Max_Verstappen",
-          "points": 261,
+          "points": 279,
           "position": 2
         },
         {
@@ -96,7 +96,7 @@
           "last": "Hadjar",
           "number": "6",
           "wikiTitle": "Isack_Hadjar",
-          "points": 107,
+          "points": 122,
           "position": 8
         },
         {
@@ -107,7 +107,7 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 83,
+          "points": 87,
           "position": 9
         }
       ]
@@ -117,8 +117,8 @@
       "name": "McLaren",
       "nationality": "British",
       "position": 4,
-      "points": 365,
-      "wins": 2,
+      "points": 398,
+      "wins": 3,
       "color": "#ff8000",
       "drivers": [
         {
@@ -129,7 +129,7 @@
           "last": "Norris",
           "number": "1",
           "wikiTitle": "Lando_Norris",
-          "points": 221,
+          "points": 246,
           "position": 6
         },
         {
@@ -140,7 +140,7 @@
           "last": "Piastri",
           "number": "81",
           "wikiTitle": "Oscar_Piastri",
-          "points": 144,
+          "points": 152,
           "position": 7
         }
       ]
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 108,
+      "points": 112,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
@@ -271,7 +271,7 @@
       "name": "Audi",
       "nationality": "German",
       "position": 8,
-      "points": 27,
+      "points": 28,
       "wins": 0,
       "color": "#9ad11f",
       "drivers": [
@@ -294,7 +294,7 @@
           "last": "Hülkenberg",
           "number": "27",
           "wikiTitle": "Nico_Hülkenberg",
-          "points": 13,
+          "points": 14,
           "position": 15
         }
       ]
@@ -586,11 +586,11 @@
     }
   ],
   "next": {
-    "round": 20,
-    "name": "Brazilian Grand Prix",
-    "circuit": "Autódromo José Carlos Pace",
-    "locality": "São Paulo",
-    "country": "Brazil",
-    "iso": "2026-11-08T17:00:00Z"
+    "round": 21,
+    "name": "Las Vegas Grand Prix",
+    "circuit": "Las Vegas Strip Street Circuit",
+    "locality": "Las Vegas",
+    "country": "USA",
+    "iso": "2026-11-22T04:00:00Z"
   }
 }
