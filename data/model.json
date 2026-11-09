@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 512,
+      "points": 510,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -63,7 +63,7 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 251,
+          "points": 249,
           "position": 5
         }
       ]
@@ -107,7 +107,7 @@
           "last": "Lawson",
           "number": "30",
           "wikiTitle": "Liam_Lawson",
-          "points": 87,
+          "points": 89,
           "position": 9
         }
       ]
@@ -150,7 +150,7 @@
       "name": "RB F1 Team",
       "nationality": "Italian",
       "position": 5,
-      "points": 112,
+      "points": 114,
       "wins": 0,
       "color": "#6692ff",
       "drivers": [
