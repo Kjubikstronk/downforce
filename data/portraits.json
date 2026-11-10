@@ -172,5 +172,14 @@
     "licence": "CC BY-SA 4.0",
     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Ryo_Hirakawa_2024_WEC_Fuji_3.jpg"
+  },
+  "rafael_camara": {
+    "file": "drivers/rafael_camara.jpg",
+    "bytes": 51992,
+    "minimised": false,
+    "author": "KVYTICAL",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rafael_C%C3%A2mara_in_2022.jpg"
   }
 }
