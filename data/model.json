@@ -7,7 +7,7 @@
       "name": "Mercedes",
       "nationality": "German",
       "position": 1,
-      "points": 652,
+      "points": 666,
       "wins": 12,
       "color": "#00d7b6",
       "drivers": [
@@ -19,7 +19,7 @@
           "last": "Antonelli",
           "number": "12",
           "wikiTitle": "Andrea_Kimi_Antonelli",
-          "points": 390,
+          "points": 402,
           "position": 1
         },
         {
@@ -30,8 +30,8 @@
           "last": "Russell",
           "number": "63",
           "wikiTitle": "George_Russell_(racing_driver)",
-          "points": 262,
-          "position": 3
+          "points": 264,
+          "position": 4
         }
       ]
     },
@@ -40,7 +40,7 @@
       "name": "Ferrari",
       "nationality": "Italian",
       "position": 2,
-      "points": 510,
+      "points": 517,
       "wins": 2,
       "color": "#e8002d",
       "drivers": [
@@ -52,8 +52,8 @@
           "last": "Hamilton",
           "number": "44",
           "wikiTitle": "Lewis_Hamilton",
-          "points": 261,
-          "position": 4
+          "points": 267,
+          "position": 3
         },
         {
           "id": "leclerc",
@@ -63,8 +63,8 @@
           "last": "Leclerc",
           "number": "16",
           "wikiTitle": "Charles_Leclerc",
-          "points": 249,
-          "position": 5
+          "points": 250,
+          "position": 6
         }
       ]
     },
@@ -73,8 +73,8 @@
       "name": "Red Bull",
       "nationality": "Austrian",
       "position": 3,
-      "points": 415,
-      "wins": 3,
+      "points": 440,
+      "wins": 4,
       "color": "#3671c6",
       "drivers": [
         {
@@ -85,7 +85,7 @@
           "last": "Verstappen",
           "number": "3",
           "wikiTitle": "Max_Verstappen",
-          "points": 279,
+          "points": 304,
           "position": 2
         },
         {
@@ -117,7 +117,7 @@
       "name": "McLaren",
       "nationality": "British",
       "position": 4,
-      "points": 398,
+      "points": 431,
       "wins": 3,
       "color": "#ff8000",
       "drivers": [
@@ -129,8 +129,8 @@
           "last": "Norris",
           "number": "1",
           "wikiTitle": "Lando_Norris",
-          "points": 246,
-          "position": 6
+          "points": 264,
+          "position": 5
         },
         {
           "id": "piastri",
@@ -140,7 +140,7 @@
           "last": "Piastri",
           "number": "81",
           "wikiTitle": "Oscar_Piastri",
-          "points": 152,
+          "points": 167,
           "position": 7
         }
       ]
@@ -183,7 +183,7 @@
       "name": "Alpine F1 Team",
       "nationality": "French",
       "position": 6,
-      "points": 69,
+      "points": 87,
       "wins": 0,
       "color": "#ff87bc",
       "drivers": [
@@ -195,7 +195,7 @@
           "last": "Gasly",
           "number": "10",
           "wikiTitle": "Pierre_Gasly",
-          "points": 42,
+          "points": 52,
           "position": 10
         },
         {
@@ -206,7 +206,7 @@
           "last": "Colapinto",
           "number": "43",
           "wikiTitle": "Franco_Colapinto",
-          "points": 27,
+          "points": 35,
           "position": 12
         }
       ]
@@ -240,7 +240,7 @@
           "number": "31",
           "wikiTitle": "Esteban_Ocon",
           "points": 7,
-          "position": 16
+          "position": 17
         },
         {
           "id": "ryo_hirakawa",
@@ -304,7 +304,7 @@
       "name": "Williams",
       "nationality": "British",
       "position": 9,
-      "points": 12,
+      "points": 16,
       "wins": 0,
       "color": "#64c4ff",
       "drivers": [
@@ -316,8 +316,8 @@
           "last": "Sainz",
           "number": "55",
           "wikiTitle": "Carlos_Sainz_Jr.",
-          "points": 7,
-          "position": 18
+          "points": 11,
+          "position": 16
         },
         {
           "id": "albon",
@@ -350,7 +350,7 @@
           "number": "14",
           "wikiTitle": "Fernando_Alonso",
           "points": 7,
-          "position": 17
+          "position": 18
         },
         {
           "id": "stroll",
