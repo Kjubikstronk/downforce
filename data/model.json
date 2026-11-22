@@ -586,11 +586,11 @@
     }
   ],
   "next": {
-    "round": 21,
-    "name": "Las Vegas Grand Prix",
-    "circuit": "Las Vegas Strip Street Circuit",
-    "locality": "Las Vegas",
-    "country": "USA",
-    "iso": "2026-11-22T04:00:00Z"
+    "round": 22,
+    "name": "Qatar Grand Prix",
+    "circuit": "Lusail International Circuit",
+    "locality": "Lusail",
+    "country": "Qatar",
+    "iso": "2026-11-29T16:00:00Z"
   }
 }
